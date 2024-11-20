@@ -135,16 +135,10 @@ Describe your data and the relationships between the data points. You can show t
 | **Offer API**  | [POST /offer/matrix](#offer-matrix)                     | Get offer matrix for a route         |
 | **Offer API**  | [POST /offer/create](#offer-create)                     | Create a new offer                   |
 | **Offer API**  | [GET /offer/{key}](#offer-details)                      | Get offer details by key             |
-| **Airline API**| [POST /airline](#airline-create)                        | Create a new airline                 |
 | **Airline API**| [GET /airline/iata/{designator}](#airline-info)         | Get airline info by IATA designator  |
 | **Airline API**| [GET /airline/all](#airline-all)                        | Fetch all airlines                   |
-| **Airport API**| [POST /airport](#airport-create)                        | Create a new airport                 |
-| **Airport API**| [GET /airport/{iata_code}](#airport-info)              | Get airport info by IATA code        |
-| **Airport API**| [GET /airport/name/{name}](#airport-name)              | Get airport info by airport name    |
-| **Airport API**| [GET /airport/city/{city}](#airport-city)              | Get airports by city                 |
 
-
-#### [POST /flight](#)
+#### [POST /flight](#flight-create)
 - **Description**: Create a flight record
 - **Response**:
   ```json
@@ -166,7 +160,7 @@ Describe your data and the relationships between the data points. You can show t
   }
   ```
 
-#### [GET /flight/flightnumber/{flightnumber}](#)
+#### [GET /flight/flightnumber/{flightnumber}](#flight-info)
 - **Description**: Get flight info by flight number
 - **Parameters**:
   - `flightnumber` (string): The flight number
@@ -190,7 +184,7 @@ Describe your data and the relationships between the data points. You can show t
   }
   ```
 
-#### [GET /flight/all](#)
+#### [GET /flight/all](#flight-all)
 - **Description**: Fetch all flights
 - **Response**:
   ```json
@@ -214,7 +208,7 @@ Describe your data and the relationships between the data points. You can show t
   }
   ```
 
-#### [POST /offer/one](#)
+#### [POST /offer/one](#offer-one)
 - **Description**: Get offers for a specific route
 - **Response**:
   ```json
@@ -238,7 +232,7 @@ Describe your data and the relationships between the data points. You can show t
   }
   ```
 
-#### [POST /offer/matrix](#)
+#### [POST /offer/matrix](#offer-matrix)
 - **Description**: Get the offer matrix for a route
 - **Response**:
   ```json
@@ -266,7 +260,7 @@ Describe your data and the relationships between the data points. You can show t
   }
   ```
 
-#### [POST /offer/create](#)
+#### [POST /offer/create](#offer-create)
 - **Description**: Create a new offer
 - **Parameters** (in query string):
   - `id`, `airlineCode`, `departFlights`, `returnFlights`, `departAirport`, `returnAirport`, `departDate`, `returnDate`, `departDuration`, `returnDuration`, `price`, `currency`
@@ -292,7 +286,7 @@ Describe your data and the relationships between the data points. You can show t
   }
   ```
 
-#### [GET /offer/{key}](#)
+#### [GET /offer/{key}](#offer-details)
 - **Description**: Get offer details by key
 - **Parameters**:
   - `key` (string): Unique identifier for the offer
@@ -318,7 +312,7 @@ Describe your data and the relationships between the data points. You can show t
   }
   ```
 
-#### [GET /airline/iata/{designator}](#)
+#### [GET /airline/iata/{designator}](#airline-info)
 - **Description**: Get airline info by IATA code
 - **Parameters**:
   - `designator` (string): The IATA designator (e.g., "DL")
@@ -337,7 +331,7 @@ Describe your data and the relationships between the data points. You can show t
   }
   ```
 
-#### [GET /airline/all](#)
+#### [GET /airline/all](#airline-all)
 - **Description**: Fetch all airlines
 - **Response**:
   ```json
