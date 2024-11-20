@@ -126,6 +126,239 @@ Describe your data and the relationships between the data points. You can show t
 ### Endpoints
 
 
+| API            | Endpoint Name                                           | Description                          |
+|----------------|---------------------------------------------------------|--------------------------------------|
+| **Flight API** | [POST /flight](#flight-create)                          | Create a flight record               |
+| **Flight API** | [GET /flight/flightnumber/{flightnumber}](#flight-info) | Get flight info by flight number     |
+| **Flight API** | [GET /flight/all](#flight-all)                          | Fetch all flights                    |
+| **Offer API**  | [POST /offer/one](#offer-one)                           | Get offers for a specific route      |
+| **Offer API**  | [POST /offer/matrix](#offer-matrix)                     | Get offer matrix for a route         |
+| **Offer API**  | [POST /offer/create](#offer-create)                     | Create a new offer                   |
+| **Offer API**  | [GET /offer/{key}](#offer-details)                      | Get offer details by key             |
+| **Airline API**| [POST /airline](#airline-create)                        | Create a new airline                 |
+| **Airline API**| [GET /airline/iata/{designator}](#airline-info)         | Get airline info by IATA designator  |
+| **Airline API**| [GET /airline/all](#airline-all)                        | Fetch all airlines                   |
+| **Airport API**| [POST /airport](#airport-create)                        | Create a new airport                 |
+| **Airport API**| [GET /airport/{iata_code}](#airport-info)              | Get airport info by IATA code        |
+| **Airport API**| [GET /airport/name/{name}](#airport-name)              | Get airport info by airport name    |
+| **Airport API**| [GET /airport/city/{city}](#airport-city)              | Get airports by city                 |
+
+
+#### [POST /flight](#)
+- **Description**: Create a flight record
+- **Response**:
+  ```json
+  {
+    "code": 0,
+    "message": "string",
+    "data": {
+      "flightNumber": "string",
+      "airlineCode": "string",
+      "departAirport": "string",
+      "departTerminal": "string",
+      "departTime": "string",
+      "arrivalAirport": "string",
+      "arrivalTerminal": "string",
+      "arrivalTime": "string",
+      "duration": "string",
+      "aircraft": "string"
+    }
+  }
+  ```
+
+#### [GET /flight/flightnumber/{flightnumber}](#)
+- **Description**: Get flight info by flight number
+- **Parameters**:
+  - `flightnumber` (string): The flight number
+- **Response**:
+  ```json
+  {
+    "code": 0,
+    "message": "string",
+    "data": {
+      "flightNumber": "string",
+      "airlineCode": "string",
+      "departAirport": "string",
+      "departTerminal": "string",
+      "departTime": "string",
+      "arrivalAirport": "string",
+      "arrivalTerminal": "string",
+      "arrivalTime": "string",
+      "duration": "string",
+      "aircraft": "string"
+    }
+  }
+  ```
+
+#### [GET /flight/all](#)
+- **Description**: Fetch all flights
+- **Response**:
+  ```json
+  {
+    "code": 0,
+    "message": "string",
+    "data": [
+      {
+        "flightNumber": "string",
+        "airlineCode": "string",
+        "departAirport": "string",
+        "departTerminal": "string",
+        "departTime": "string",
+        "arrivalAirport": "string",
+        "arrivalTerminal": "string",
+        "arrivalTime": "string",
+        "duration": "string",
+        "aircraft": "string"
+      }
+    ]
+  }
+  ```
+
+#### [POST /offer/one](#)
+- **Description**: Get offers for a specific route
+- **Response**:
+  ```json
+  {
+    "code": 0,
+    "message": "string",
+    "data": {
+      "id": "string",
+      "airlineCode": "string",
+      "departFlightSegments": "string",
+      "returnFlightSegments": "string",
+      "departAirport": "string",
+      "returnAirport": "string",
+      "departDate": "string",
+      "returnDate": "string",
+      "departDuration": "string",
+      "returnDuration": "string",
+      "price": 0,
+      "currency": "string"
+    }
+  }
+  ```
+
+#### [POST /offer/matrix](#)
+- **Description**: Get the offer matrix for a route
+- **Response**:
+  ```json
+  {
+    "code": 0,
+    "message": "string",
+    "data": [
+      [
+        {
+          "id": "string",
+          "airlineCode": "string",
+          "departFlightSegments": "string",
+          "returnFlightSegments": "string",
+          "departAirport": "string",
+          "returnAirport": "string",
+          "departDate": "string",
+          "returnDate": "string",
+          "departDuration": "string",
+          "returnDuration": "string",
+          "price": 0,
+          "currency": "string"
+        }
+      ]
+    ]
+  }
+  ```
+
+#### [POST /offer/create](#)
+- **Description**: Create a new offer
+- **Parameters** (in query string):
+  - `id`, `airlineCode`, `departFlights`, `returnFlights`, `departAirport`, `returnAirport`, `departDate`, `returnDate`, `departDuration`, `returnDuration`, `price`, `currency`
+- **Response**:
+  ```json
+  {
+    "code": 0,
+    "message": "string",
+    "data": {
+      "id": "string",
+      "airlineCode": "string",
+      "departFlightSegments": "string",
+      "returnFlightSegments": "string",
+      "departAirport": "string",
+      "returnAirport": "string",
+      "departDate": "string",
+      "returnDate": "string",
+      "departDuration": "string",
+      "returnDuration": "string",
+      "price": 0,
+      "currency": "string"
+    }
+  }
+  ```
+
+#### [GET /offer/{key}](#)
+- **Description**: Get offer details by key
+- **Parameters**:
+  - `key` (string): Unique identifier for the offer
+- **Response**:
+  ```json
+  {
+    "code": 0,
+    "message": "string",
+    "data": {
+      "id": "string",
+      "airlineCode": "string",
+      "departFlightSegments": "string",
+      "returnFlightSegments": "string",
+      "departAirport": "string",
+      "returnAirport": "string",
+      "departDate": "string",
+      "returnDate": "string",
+      "departDuration": "string",
+      "returnDuration": "string",
+      "price": 0,
+      "currency": "string"
+    }
+  }
+  ```
+
+#### [GET /airline/iata/{designator}](#)
+- **Description**: Get airline info by IATA code
+- **Parameters**:
+  - `designator` (string): The IATA designator (e.g., "DL")
+- **Response**:
+  ```json
+  {
+    "code": 0,
+    "message": "string",
+    "data": {
+      "iataDesignator": "string",
+      "name": "string",
+      "threeDigitCode": "string",
+      "icaoDesignator": "string",
+      "country": "string"
+    }
+  }
+  ```
+
+#### [GET /airline/all](#)
+- **Description**: Fetch all airlines
+- **Response**:
+  ```json
+  {
+    "code": 0,
+    "message": "string",
+    "data": [
+      {
+        "iataDesignator": "string",
+        "name": "string",
+        "threeDigitCode": "string",
+        "icaoDesignator": "string",
+        "country": "string"
+      }
+    ]
+  }
+  ```
+
+---
+
+
 ## Roadmap
 
 Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation working back from the capstone due date.
