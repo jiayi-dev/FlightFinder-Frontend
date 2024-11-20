@@ -111,7 +111,7 @@ The app will be designed with accessibility in mind, following the Web Content A
 ---
 ### Sitemap
 
-![Sitemap](./src/assets/Sitemap.png "Sitemap")
+![Sitemap](./src/assets/sitemap.png "Sitemap")
 
 ### Mockups
 
