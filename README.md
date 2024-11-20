@@ -120,8 +120,8 @@ The app will be designed with accessibility in mind, following the Web Content A
 ![mybooking](./src/assets/mybooking.png "My Booking")
 
 ### Data
+![Database](./src/assets/Database.png "Database")
 
-Describe your data and the relationships between the data points. You can show this visually using diagrams, or write it out.
 
 ### Endpoints
 
