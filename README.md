@@ -355,7 +355,32 @@ The app will be designed with accessibility in mind, following the Web Content A
 
 ## Roadmap
 
-Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation working back from the capstone due date.
+
+[Capstone project Dashboard](https://github.com/users/jiayi-dev/projects/8)
+
+### **Iteration 1: Core Features and Basic Functionality**
+Time  - 1 Weeks
+
+- [ ] API Integration (Flight API)
+- [ ] Flight Search Functionality
+- [ ] Flight Filters
+- [ ] Sort Options
+- [ ] Flight Details
+
+
+### **Iteration 2: QA & Bug-fix **
+Time - 2 Days
+- [ ] Testing Core Features
+- [ ] Testing & Bug Fixes
+- [ ] Review and Deployment
+
+### **Iteration 3: Advanced Features**
+Time - 4 Days
+- [ ] User Accounts and Booking History
+- [ ] Mobile-Friendly Design
+- [ ] Multi-City Search Implementation
+- [ ] Final Testing & Bug Fixes
+- [ ] Final Review and Deployment
 
 ---
 
