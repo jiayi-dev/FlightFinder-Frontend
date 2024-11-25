@@ -376,22 +376,8 @@ The app will be designed with accessibility in mind, following the Web Content A
 
 | Title                           | Assignees   | Status | Priority | Estimate (hrs) | Size |
 |---------------------------------|------------|--------|----------|----------------|------|
-| [Testing Core Features](https://github.com/jiayi-dev/capstone-project/issues/12)           | jiayi-dev  | Backlog| P1       | 8              | L    |
-| [Testing & Bug Fixes](https://github.com/jiayi-dev/capstone-project/issues/14)             | jiayi-dev  | Backlog| P1       | 4              | M    |
-| [Review and Deployment](https://github.com/jiayi-dev/capstone-project/issues/13)           | jiayi-dev  | Backlog| P1       | 4              | M    |
-
----
-
-### **[Iteration 3](https://github.com/jiayi-dev/capstone-project/milestone/3): Advanced Features**
-**Time** - 4 Days
-
-| Title                           | Assignees   | Status | Priority | Estimate (hrs) | Size |
-|---------------------------------|------------|--------|----------|----------------|------|
-| [User Accounts and Booking History](https://github.com/jiayi-dev/capstone-project/issues/15)| jiayi-dev  | Backlog| P2       | 8              | L    |
 | [Mobile-Friendly Design](https://github.com/jiayi-dev/capstone-project/issues/16)          | jiayi-dev  | Backlog| P1       | 4              | M    |
-| [Multi-City Search Implementation](https://github.com/jiayi-dev/capstone-project/issues/17)| jiayi-dev  | Backlog| P2       | 8              | L    |
-| [Final Testing & Bug Fixes](https://github.com/jiayi-dev/capstone-project/issues/18)       | jiayi-dev  | Backlog| P1       | 6              | M    |
-| [Final Review and Deployment](https://github.com/jiayi-dev/capstone-project/issues/19)     | jiayi-dev  | Backlog| P1       | 4              | M    |
+| [Review and Deployment](https://github.com/jiayi-dev/capstone-project/issues/13)           | jiayi-dev  | Backlog| P1       | 4              | M    |
 
 ---
 
