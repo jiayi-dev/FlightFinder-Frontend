@@ -18,7 +18,6 @@ These issues can make it difficult and stressful to find the best flight deals. 
 ### User Profile
 
 FlightFinder is designed for travelers, especially international students, who find searching for affordable flights frustrating and time-consuming.
-The app will be designed with accessibility in mind, following the Web Content Accessibility Guidelines (WCAG) and the Accessibility for Ontarians with Disabilities Act (AODA). This ensures that FlightFinder is easy to use for everyone, including people with disabilities.
 
 ### Features
 
