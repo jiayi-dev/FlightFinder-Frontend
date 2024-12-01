@@ -38,7 +38,7 @@ jobs:
     needs: build
     if: github.ref == 'refs/heads/main'
 
-    environment: gh-page
+    environment: github-pages
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
