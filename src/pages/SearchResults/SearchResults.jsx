@@ -1,5 +1,5 @@
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { FaCalendarAlt, FaUser } from 'react-icons/fa';
 import FlightCard from '../../components/FlightCard/FlightCard.jsx';
 import TextSpinnerLoader from '../../components/TextSpinner/TextSpinner';
@@ -21,11 +21,27 @@ const SearchResults = () => {
     const [isFlexible, setIsFlexible] = useState(false);
     const [lastRequestTime, setLastRequestTime] = useState(null);
 
-    const updatedSearchData = {
-        ...searchData,
-        departDate: searchData?.departDate ? new Date(searchData.departDate).toISOString().slice(0, 10) : '',
-        returnDate: searchData?.returnDate ? new Date(searchData.returnDate).toISOString().slice(0, 10) : '',
-        priceOrDuration: priority,
+    const updatedSearchData = useMemo(() => {
+        return {
+            ...searchData,
+            departDate: searchData?.departDate ? new Date(searchData.departDate).toISOString().slice(0, 10) : '',
+            returnDate: searchData?.returnDate ? new Date(searchData.returnDate).toISOString().slice(0, 10) : '',
+            priceOrDuration: priority,
+        };
+    }, [searchData, priority]);
+
+    const fetchFlightsByNumbers = async (flightNumbers) => {
+        const requests = flightNumbers.map((flightNumber) =>
+            axios.get(`${apiBaseUrl}/flight/flightnumber/${flightNumber}`)
+        );
+        try {
+            const responses = await Promise.all(requests);
+            return responses.map(response => response.data.data);
+        } catch (error) {
+            setError('Error fetching flight details');
+            console.error(error);
+            return [];
+        }
     };
 
     const handleOffer = async () => {
@@ -38,51 +54,30 @@ const SearchResults = () => {
                 attempt++;
                 const response = await axios.post(`${apiBaseUrl}/offer/one`, updatedSearchData);
                 const offerData = response.data.data;
-
-                if (offerData) {
-                    setOffer(offerData);
-
-                    const departSegments = offerData.departFlightSegments?.split('-') || [];
-                    const returnSegments = offerData.returnFlightSegments?.split('-') || [];
-
-                    if (departSegments.length === 0 && returnSegments.length === 0) {
-                        setFlight({ departFlights: [], returnFlights: [] });
-                        return;
-                    }
-
-                    const departFlightRequests = departSegments.map(flightNumber =>
-                        axios.get(`${apiBaseUrl}/flight/flightnumber/${flightNumber}`)
-                    );
-                    const returnFlightRequests = returnSegments.map(flightNumber =>
-                        axios.get(`${apiBaseUrl}/flight/flightnumber/${flightNumber}`)
-                    );
-
-                    const [departResponses, returnResponses] = await Promise.all([
-                        Promise.all(departFlightRequests),
-                        Promise.all(returnFlightRequests)
-                    ]);
-
-                    const departFlights = departResponses.map(response => response.data.data);
-                    const returnFlights = returnResponses.map(response => response.data.data);
-
-                    setFlight({
-                        departFlights,
-                        returnFlights
-                    });
-
-                    break;
-                } else {
-                    throw new Error("Offer data is null or undefined");
-                }
+                fetchFlight(offerData);
             } catch (error) {
                 if (attempt === maxAttempts) {
                     setError('There was an error loading the flight details.');
+                    console.error(error);
                 }
             } finally {
                 setIsLoading(false);
             }
         }
     };
+
+    const fetchFlight = async (offerData) => {
+        if (offerData) {
+            const departSegments = offerData.departFlightSegments?.split('-') || [];
+            const returnSegments = offerData.returnFlightSegments?.split('-') || [];
+
+            const departFlights = await fetchFlightsByNumbers(departSegments);
+            const returnFlights = await fetchFlightsByNumbers(returnSegments);
+
+            setFlight({ departFlights, returnFlights });
+        }
+    };
+
     const fetchMetricData = async () => {
         if (!isFlexible) return;
 
@@ -102,6 +97,7 @@ const SearchResults = () => {
             });
         } catch (error) {
             setError('Error fetching metric data');
+            console.error(error);
         } finally {
             setIsLoading(false);
         }
@@ -170,6 +166,7 @@ const SearchResults = () => {
                                     value={priority}
                                     onChange={(e) => setPriority(e.target.value)}
                                     className="search-results__filter-select"
+                                    aria-label="Sort by"
                                 >
                                     <option value="price">Recommended</option>
                                     <option value="duration">Duration</option>
@@ -179,6 +176,7 @@ const SearchResults = () => {
                                         type="checkbox"
                                         checked={isFlexible}
                                         onChange={handleCheckboxChange}
+                                        aria-label="Check if dates are flexible"
                                     />
                                     My dates are flexible
                                 </label>
@@ -196,12 +194,6 @@ const SearchResults = () => {
                                     <span>Total Fare:</span>
                                     <span className="search-results__amount">${offer ? Math.round(offer.price * 1.5) : 'N/A'}</span>
                                 </div>
-                                <button
-                                    className="search-results__add-button"
-                                    onClick={handleAddToMyFlight}
-                                >
-                                    Add to My Flight
-                                </button>
                             </div>
                         </div>
                     </div>
