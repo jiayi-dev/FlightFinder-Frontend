@@ -100,7 +100,6 @@ const SearchResults = () => {
                 returnDate: updatedSearchData.returnDate,
                 numberOfAdults: searchData?.travelers?.adults || 1
             });
-            console.log('Metric data:', response.data);
         } catch (error) {
             setError('Error fetching metric data');
         } finally {
