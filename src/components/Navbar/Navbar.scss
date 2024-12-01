@@ -1,0 +1,61 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/breakpoints' as *;
+
+.nav {
+  &__container {
+    max-width: $container-max-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $spacing-4;
+    padding-right: $spacing-4;
+
+    @include mobile {
+      padding-left: $spacing-6;
+      padding-right: $spacing-6;
+    }
+
+    @include tablet {
+      padding-left: $spacing-8;
+      padding-right: $spacing-8;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    height: $spacing-16;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-text {
+    font-size: $font-size-2xl;
+    font-weight: bold;
+    color: $primary;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+  }
+
+  &__link {
+    color: $gray-700;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

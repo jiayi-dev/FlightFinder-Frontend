@@ -1,0 +1,14 @@
+@use '../../styles/variables' as *;
+
+.circle {
+  position: relative;
+  aspect-ratio: 1;
+}
+
+.letter {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-weight: 700;
+  color:$secondary-blue ;
+}

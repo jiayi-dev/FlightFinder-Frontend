@@ -22,7 +22,7 @@ The app will be designed with accessibility in mind, following the Web Content A
 
 ### Features
 
-#### 1. **Flight Search Functionality**
+#### 1. **Flight AirportSearch Functionality**
 **Feature:** Users can search for flights by entering details like departure and destination cities, travel dates, and number of passengers.  
 **User Story:** As a user, I want to search for flights by specifying my departure city, destination, and travel dates, so I can find available flights that match my needs.
 
@@ -46,7 +46,7 @@ The app will be designed with accessibility in mind, following the Web Content A
 
 ---
 
-#### 5. **Multi-City Search**
+#### 5. **Multi-City AirportSearch**
 **Feature:** Enable users to search for multi-city or round-trip flights.  
 **User Story:** As a user, I want to search for multi-city or round-trip flights, so I can plan a more complex itinerary with multiple destinations.
 
@@ -364,7 +364,7 @@ The app will be designed with accessibility in mind, following the Web Content A
 | Title                           | Assignees   | Status | Priority | Estimate (hrs) | Size |
 |---------------------------------|------------|--------|----------|----------------|------|
 | [API Integration (Flight API)](https://github.com/jiayi-dev/capstone-project/issues/7)    | jiayi-dev  | Backlog| P0       | 4              | M    |
-| [Flight Search Functionality](https://github.com/jiayi-dev/capstone-project/issues/8)     | jiayi-dev  | Backlog| P0       | 2              | S    |
+| [Flight AirportSearch Functionality](https://github.com/jiayi-dev/capstone-project/issues/8)     | jiayi-dev  | Backlog| P0       | 2              | S    |
 | [Flight Filters](https://github.com/jiayi-dev/capstone-project/issues/9)                  | jiayi-dev  | Backlog| P0       | 5              | M    |
 | [Sort Options](https://github.com/jiayi-dev/capstone-project/issues/10)                    | jiayi-dev  | Backlog| P0       | 3              | S    |
 | [Flight Details](https://github.com/jiayi-dev/capstone-project/issues/11)                  | jiayi-dev  | Backlog| P0       | 6              | M    |
@@ -389,7 +389,7 @@ The app will be designed with accessibility in mind, following the Web Content A
 |---------------------------------|------------|--------|----------|----------------|------|
 | [User Accounts and Booking History](https://github.com/jiayi-dev/capstone-project/issues/15)| jiayi-dev  | Backlog| P2       | 8              | L    |
 | [Mobile-Friendly Design](https://github.com/jiayi-dev/capstone-project/issues/16)          | jiayi-dev  | Backlog| P1       | 4              | M    |
-| [Multi-City Search Implementation](https://github.com/jiayi-dev/capstone-project/issues/17)| jiayi-dev  | Backlog| P2       | 8              | L    |
+| [Multi-City AirportSearch Implementation](https://github.com/jiayi-dev/capstone-project/issues/17)| jiayi-dev  | Backlog| P2       | 8              | L    |
 | [Final Testing & Bug Fixes](https://github.com/jiayi-dev/capstone-project/issues/18)       | jiayi-dev  | Backlog| P1       | 6              | M    |
 | [Final Review and Deployment](https://github.com/jiayi-dev/capstone-project/issues/19)     | jiayi-dev  | Backlog| P1       | 4              | M    |
 
