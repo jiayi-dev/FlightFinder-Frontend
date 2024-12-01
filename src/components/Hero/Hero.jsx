@@ -1,8 +1,8 @@
 import './Hero.scss';
-import airplane from '../../assets/flight.webp';
-import beach from "../../assets/beach.mp4";
-import paradise from "../../assets/paradise.mp4";
-import sunset from "../../assets/sunset.mp4";
+import airplane from '../../../public/assets/flight.webp';
+import beach from "../../../public/assets/beach.mp4";
+import paradise from "../../../public/assets/paradise.mp4";
+import sunset from "../../../public/assets/sunset.mp4";
 
 function Hero() {
     return (
