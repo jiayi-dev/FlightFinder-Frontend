@@ -111,12 +111,6 @@ const SearchResults = () => {
         handleOffer();
     }, [priority]);
 
-    const handleAddToMyFlight = () => {
-        navigate('/booking', {
-            state: { offerId: offer.id }
-        });
-    };
-
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return date instanceof Date && !isNaN(date) ? date.toLocaleDateString() : 'Invalid date';
