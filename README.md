@@ -110,16 +110,16 @@ FlightFinder is designed for travelers, especially international students, who f
 ---
 ### Sitemap
 
-![Sitemap](./src/assets/sitemap.png "Sitemap")
+![Sitemap](public/assets/sitemap.png "Sitemap")
 
 ### Mockups
 
-![home](./src/assets/homepage.png "Home")
-![result](./src/assets/results.png "Result")
-![mybooking](./src/assets/mybooking.png "My Booking")
+![home](public/assets/homepage.png "Home")
+![result](public/assets/results.png "Result")
+![mybooking](public/assets/mybooking.png "My Booking")
 
 ### Data
-![Database](./src/assets/Database.png "Database")
+![Database](public/assets/Database.png "Database")
 
 
 ### Endpoints
