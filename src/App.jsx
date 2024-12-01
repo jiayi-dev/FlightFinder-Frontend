@@ -8,7 +8,7 @@ import './App.scss'
 function App() {
 
   return (
-      <BrowserRouter>
+      <BrowserRouter basename="/capstone-project">
           <div className="app">
               <Navbar />
               <main className="app__main">
