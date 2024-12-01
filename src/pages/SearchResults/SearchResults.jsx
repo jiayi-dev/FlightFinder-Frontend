@@ -9,8 +9,6 @@ import axios from 'axios';
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const SearchResults = () => {
-    console.log(apiBaseUrl);
-
     const { state } = useLocation();
     const { searchData } = state || {};
     const [offer, setOffer] = useState([]);
@@ -21,6 +19,7 @@ const SearchResults = () => {
     const navigate = useNavigate();
 
     const [isFlexible, setIsFlexible] = useState(false);
+    const [lastRequestTime, setLastRequestTime] = useState(null);
 
     const updatedSearchData = {
         ...searchData,
@@ -84,30 +83,33 @@ const SearchResults = () => {
             }
         }
     };
+    const fetchMetricData = async () => {
+        if (!isFlexible) return;
+
+        const now = Date.now();
+        if (lastRequestTime && now - lastRequestTime < 500) return;
+        setLastRequestTime(now);
+
+        setIsLoading(true);
+
+        try {
+            const response = await axios.post(`${apiBaseUrl}/offer/matrix`, {
+                origin: searchData?.origin,
+                destination: searchData?.destination,
+                departDate: updatedSearchData.departDate,
+                returnDate: updatedSearchData.returnDate,
+                numberOfAdults: searchData?.travelers?.adults || 1
+            });
+        } catch (error) {
+            setError('Error fetching metric data');
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     useEffect(() => {
-        const fetchMetricData = async () => {
-            if (!isFlexible) return;
-            setIsLoading(true);
-
-            try {
-                const response = await axios.post(`${apiBaseUrl}/offer/matrix`, {
-                    origin: searchData?.origin,
-                    destination: searchData?.destination,
-                    departDate: updatedSearchData.departDate,
-                    returnDate: updatedSearchData.returnDate,
-                    numberOfAdults: searchData?.travelers?.adults || 1
-                });
-                console.log('Metric data:', response.data);
-            } catch (error) {
-                setError('Error fetching metric data');
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
         fetchMetricData();
-    }, [isFlexible, updatedSearchData]);
+    }, [isFlexible, updatedSearchData, lastRequestTime]);
 
     useEffect(() => {
         handleOffer();
