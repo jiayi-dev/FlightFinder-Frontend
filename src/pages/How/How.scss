@@ -1,0 +1,104 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/breakpoints' as *;
+
+.how-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: $border-dark;
+}
+
+.how-header {
+  text-align: center;
+  margin-bottom: $spacing-16;
+  padding: $spacing-8 0;
+}
+
+.how-title {
+  font-size: $font-size-5xl;
+  color: $gray-600;
+  margin-bottom: $spacing-4;
+}
+
+.how-subtitle {
+  font-size: $spacing-6;
+  color: $gray-500;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.how-section {
+  margin-bottom: $spacing-16;
+}
+
+.section-title {
+  font-size: $font-size-3xl;
+  color: $gray-600;
+  margin-bottom: $spacing-8;
+  text-align: center;
+}
+
+.features-grid,
+.benefits-container {
+  display: grid;
+  gap: $spacing-8;
+  padding: $spacing-4;
+
+  @include mobile{
+    grid-template-columns: 1fr;
+  }
+
+  &.features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  &.benefits-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+.feature-item,
+.benefit-item {
+  padding: $spacing-8;
+  border-radius: $border-radius-lg;
+  transition: all 0.3s ease;
+
+  &.feature-item {
+    background-color: $gray-100;
+    box-shadow: $shadow-md;
+  }
+
+  &.benefit-item {
+    background-color: $gray-100;
+    text-align: center;
+  }
+}
+
+.feature-title,
+.benefit-title {
+  font-size: $font-size-2xl;
+  color: $gray-600;
+  margin-bottom: $spacing-4;
+
+  &.benefit-title {
+    font-size: $font-size-2xl;
+  }
+}
+
+.feature-description,
+.benefit-description {
+  color: $gray-600;
+  line-height: 1.6;
+}
+
+@include mobile{
+  .how-title {
+    font-size: $font-size-4xl;
+  }
+
+  .how-subtitle {
+    font-size: $font-size-xl;
+  }
+}
