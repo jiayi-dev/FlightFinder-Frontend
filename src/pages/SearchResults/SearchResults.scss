@@ -1,0 +1,195 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/breakpoints' as *;
+
+.search-results {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $spacing-6;
+
+  &__error {
+    padding: $spacing-4;
+    border-radius: $radius-md;
+    margin-bottom: $spacing-4;
+  }
+
+  &__header {
+    background-color: $white;
+    padding: $spacing-4 $spacing-6;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-sm;
+    margin-bottom: $spacing-6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__layout {
+    display: flex;
+    gap: $spacing-8;
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    background-color: $white;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-sm;
+  }
+
+  &__sidebar {
+    width: 20rem;
+    background-color: $white;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-sm;
+  }
+
+  &__filter {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+    margin-bottom: $spacing-4;
+
+    @include mobile {
+      flex-direction: column;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: $spacing-2;
+      font-size: $font-size-base;
+      color: $gray-600;
+
+      input {
+        margin-right: $spacing-2;
+      }
+    }
+
+    select {
+      padding: $spacing-2;
+      border: 1px solid $gray-300;
+      border-radius: $radius-md;
+      font-size: $font-size-base;
+      color: $gray-600;
+    }
+  }
+
+  &__route {
+    font-size: $font-size-xl;
+    font-weight: 600;
+    color: $gray-900;
+
+    &-separator {
+      margin: 0 $spacing-2;
+      color: $gray-400;
+    }
+  }
+
+  &__details {
+    display: flex;
+    gap: $spacing-6;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    color: $gray-600;
+    font-size: $font-size-base;
+  }
+
+  &__icon {
+    color: $gray-400;
+  }
+
+  &__search-button {
+    background-color: $primary;
+    color: $white;
+    padding: $spacing-2 $spacing-4;
+    border-radius: $radius-md;
+    font-weight: 500;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: darken($primary, 10%);
+    }
+  }
+
+  &__content {
+    background-color: $white;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-sm;
+  }
+
+  &__summary {
+    border-top: 1px solid $gray-200;
+    padding: $spacing-4 $spacing-6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__price {
+    font-size: $font-size-lg;
+    color: $gray-900;
+
+    .search-results__amount {
+      font-weight: 600;
+      color: $primary;
+      margin-left: $spacing-2;
+    }
+  }
+
+  &__add-button {
+    background-color: $primary;
+    color: $white;
+    padding: $spacing-3 $spacing-6;
+    border-radius: $radius-md;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: darken($primary, 10%);
+    }
+  }
+
+  &__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 999;
+  }
+
+  @include mobile {
+    padding: $spacing-4;
+
+    &__header {
+      flex-direction: column;
+      gap: $spacing-4;
+      text-align: center;
+    }
+
+    &__details {
+      flex-direction: column;
+      gap: $spacing-2;
+    }
+
+    &__summary {
+      flex-direction: column;
+      gap: $spacing-4;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,139 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/breakpoints' as *;
+
+.flight-search {
+  min-height: 80vh;
+  @include flex-center;
+  padding: $spacing-4;
+
+  &__container {
+    width: 100%;
+    max-width: 64rem;
+    background-color: $white;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-lg;
+    padding: $spacing-6;
+  }
+
+  &__header {
+    margin-bottom: $spacing-6;
+    @include flex-center;
+    width: 100%;
+  }
+
+  &__form {
+    position: relative;
+  }
+
+  &__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-4;
+    margin-bottom: $spacing-4;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__dates {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-4;
+    margin-top: $spacing-4;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__field {
+    position: relative;
+  }
+
+  &__submit {
+    width: 100%;
+    margin-top: $spacing-6;
+    padding: $spacing-4;
+    background-color: $primary-color;
+    color: $white;
+    border-radius: $border-radius-lg;
+    font-weight: 500;
+    @include button-base;
+
+    &:hover {
+      background-color: $primary-hover;
+    }
+  }
+}
+
+.swap-button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: $white;
+  border: 1px solid $border-light;
+  border-radius: 50%;
+  @include flex-center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+  box-shadow: $shadow-md;
+
+  &:hover {
+    background-color: $gray-50;
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+
+  svg {
+    color: $primary-color;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.travelers {
+  position: relative;
+
+  &__field {
+    background-color: $gray-50;
+    border-radius: $border-radius-lg;
+    padding: $spacing-4;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: $gray-100;
+    }
+  }
+
+  &__content {
+    @include flex-center;
+    gap: $spacing-3;
+  }
+
+  &__icon {
+    color: $primary-color;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__label {
+    color: $gray-500;
+    font-size: 0.875rem;
+  }
+
+  &__value {
+    font-weight: 500;
+    color: $gray-700;
+  }
+}

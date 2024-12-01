@@ -1,0 +1,138 @@
+@use 'breakpoints' as *;
+@use 'variables' as *;
+
+// Flexbox layouts
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+// Grid layouts
+@mixin grid($columns: 1, $gap: $spacing-4) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// Container
+@mixin container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-4;
+  padding-right: $spacing-4;
+}
+
+// Typography
+@mixin heading-1 {
+  font-size: $font-size-4xl;
+  line-height: 1.2;
+  font-weight: 700;
+
+  @include mobile {
+    font-size: $font-size-5xl;
+  }
+}
+
+@mixin heading-2 {
+  font-size: $font-size-3xl;
+  line-height: 1.3;
+  font-weight: 600;
+
+  @include mobile {
+    font-size: $font-size-4xl;
+  }
+}
+
+// Buttons
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-2 $spacing-4;
+  border-radius: $radius-md;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+@mixin button-primary {
+  @include button-base;
+  background-color: $primary;
+  color: $white;
+
+  &:hover {
+    background-color: darken($primary, 10%);
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background-color: $secondary;
+  color: $white;
+
+  &:hover {
+    background-color: darken($secondary, 10%);
+  }
+}
+
+// Cards
+@mixin card {
+  background-color: $white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  padding: $spacing-6;
+}
+
+// Form elements
+@mixin input-base {
+  width: 100%;
+  padding: $spacing-3;
+  border: 1px solid $gray-300;
+  border-radius: $radius-md;
+  font-size: $font-size-base;
+  transition: all 0.2s ease-in-out;
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: 0 0 0 2px rgba($primary, 0.1);
+  }
+}
+
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin input-base {
+  width: 100%;
+  padding: $spacing-2;
+  border: 1px solid $border-light;
+  border-radius: $border-radius;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    border-color: $primary-color;
+  }
+}
+
+@mixin button-base {
+  cursor: pointer;
+  border: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}

@@ -1,0 +1,27 @@
+@use './styles/variables' as *;
+@use './styles/mixins' as *;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  color: $text-dark;
+  background-color: $bg-light;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input,
+select,
+button {
+  font-family: inherit;
+}

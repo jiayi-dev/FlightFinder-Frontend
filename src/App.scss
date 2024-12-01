@@ -1,0 +1,8 @@
+@use "./styles/breakpoints" as *;
+.app__main{
+  min-height: 80vh;
+
+  @include tablet{
+    min-height: 70vh;
+  }
+}
