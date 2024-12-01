@@ -1,0 +1,45 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/breakpoints' as *;
+
+.about-section {
+  background-color: $white;
+  padding: 40px 20px;
+  text-align: center;
+
+  .about-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+
+    .about-title {
+      font-size: $font-size-4xl;
+      color: $primary-color;
+      margin-bottom: $spacing-4;
+    }
+
+    .about-description {
+      font-size: $font-size-xl;
+      color: $gray-600;
+      line-height: 1.6;
+      margin: 0 auto;
+
+      strong {
+        color: $primary-color;
+      }
+    }
+  }
+
+@include mobile{
+    .about-title {
+      font-size: $font-size-3xl;
+    }
+
+    .about-description {
+      font-size: $font-size-base;
+    }
+  }
+}
