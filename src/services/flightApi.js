@@ -18,4 +18,42 @@ export const fetchMatrixOffer = async (searchData) => {
     return response.data.data;
 };
 
+export const fetchSegment = async (flight) => {
+    if (flight) {
+        const departSegments = flight.departFlightSegments?.split('-') || [];
+        const returnSegments = flight.returnFlightSegments?.split('-') || [];
+
+        if (departSegments.length === 0 && returnSegments.length === 0) {
+            return ({ departFlights: [], returnFlights: [] });
+        }
+
+        const departFlightRequests = departSegments.map(flightNumber =>
+            axios.get(`${apiBaseUrl}/flight/flightnumber/${flightNumber}`)
+        );
+
+        const returnFlightRequests = returnSegments.map(flightNumber =>
+            axios.get(`${apiBaseUrl}/flight/flightnumber/${flightNumber}`)
+        );
+
+        try {
+            const [departResponses, returnResponses] = await Promise.all([
+                Promise.all(departFlightRequests),
+                Promise.all(returnFlightRequests)
+            ]);
+
+            const departFlights = departResponses.map(response => response.data.data);
+            const returnFlights = returnResponses.map(response => response.data.data);
+
+            return ({
+                departFlights,
+                returnFlights
+            });
+
+        } catch (error) {
+            console.error("Error fetching flight data:", error);
+        }
+    } else {
+        throw new Error("Offer data is null or undefined");
+    }
+}
 

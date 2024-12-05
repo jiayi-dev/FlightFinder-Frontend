@@ -1,14 +1,28 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import { FaPlaneDeparture } from 'react-icons/fa';
-import { formatDate, formatDuration } from '../../utils/dateUtils';
+import { formatDate, formatDuration,airlineMap,airportMap } from '../../utils/dateUtils';
 import FlightOverlay from "../FlightOverlay/FlightOverlay.jsx";
+import {fetchSegment} from "../../services/flightApi.js";
 
 const FlightCard = ({ flight }) => {
     const [showDetails, setShowDetails] = useState(false);
+    const [segment, setSegment] = useState({ departFlights: [], returnFlights: [] });
 
     const handleClick = () => {
         setShowDetails(true);
     };
+
+    useEffect(() => {
+        const fetchFlight = async () => {
+            try{
+                const response = await fetchSegment(flight);
+                setSegment(response);
+            }catch (error) {
+                console.log(error);
+            }
+        }
+        fetchFlight();
+    },[])
 
     return (
         <>
@@ -27,14 +41,45 @@ const FlightCard = ({ flight }) => {
                 <div className="flight-card__details">
                     <div className="flight-card__segment">
                         <span className="flight-card__segment-title">Depart:</span>
-                        <span>{flight.departFlightSegments}</span>
+                        <span>
+    {segment.departFlights.reduce((acc, flight, index, flights) => {
+        const departure = flight.departAirport;
+        const arrival = flight.arrivalAirport;
+        const nextFlight = flights[index + 1];
+
+        if (index === 0) {
+            acc.push(departure);
+        }
+
+        if (!acc.includes(arrival)) {
+            acc.push(arrival);
+        }
+
+        return acc;
+    }, []).join(' - ')}
+</span>
+
                         <span className="flight-card__duration">
               {formatDuration(flight.departDuration)}
             </span>
                     </div>
                     <div className="flight-card__segment">
                         <span className="flight-card__segment-title">Return:</span>
-                        <span>{flight.returnFlightSegments}</span>
+                        <span> {segment.returnFlights.reduce((acc, flight, index, flights) => {
+                            const departure = flight.departAirport;
+                            const arrival = flight.arrivalAirport;
+                            const nextFlight = flights[index + 1];
+
+                            if (index === 0) {
+                                acc.push(departure);
+                            }
+
+                            if (!acc.includes(arrival)) {
+                                acc.push(arrival);
+                            }
+
+                            return acc;
+                        }, []).join(' - ')}</span>
                         <span className="flight-card__duration">
               {formatDuration(flight.returnDuration)}
             </span>
