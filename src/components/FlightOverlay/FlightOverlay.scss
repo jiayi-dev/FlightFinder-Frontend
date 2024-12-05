@@ -1,0 +1,171 @@
+.flight-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  &__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+  }
+
+  &__content {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1001;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  &__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+  }
+
+  &__header {
+    margin-bottom: 2rem;
+
+    h2 {
+      margin: 0;
+      color: #2d3748;
+      font-size: 1.8rem;
+    }
+  }
+
+  &__route {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  &__airport {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    svg {
+      font-size: 1.5rem;
+      color: #4a90e2;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #2d3748;
+    }
+
+    p {
+      margin: 0;
+      color: #718096;
+    }
+  }
+
+  &__separator {
+    font-size: 2rem;
+    color: #4a90e2;
+  }
+
+  &__info {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+    background: #f7fafc;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+
+    svg {
+      color: #4a90e2;
+    }
+  }
+
+  &__segments {
+    margin-bottom: 2rem;
+  }
+
+  &__segment {
+    background: #f7fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+
+    h3 {
+      color: #2d3748;
+      margin: 0 0 0.5rem 0;
+    }
+
+    &-info {
+      display: flex;
+      justify-content: space-between;
+      color: #4a5568;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  &__price {
+    &-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f7fafc;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    &-amount {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #2d3748;
+    }
+  }
+
+  &__book-button {
+    padding: 0.75rem 2rem;
+    background: #48bb78;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: #38a169;
+    }
+  }
+}
