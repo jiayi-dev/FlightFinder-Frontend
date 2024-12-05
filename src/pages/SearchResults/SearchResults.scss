@@ -26,6 +26,7 @@
 
   &__layout {
     display: flex;
+    flex-direction: column;
     gap: $spacing-8;
 
     @include mobile {
@@ -38,44 +39,6 @@
     background-color: $white;
     border-radius: $radius-lg;
     box-shadow: $shadow-sm;
-  }
-
-  &__sidebar {
-    width: 20rem;
-    background-color: $white;
-    border-radius: $radius-lg;
-    box-shadow: $shadow-sm;
-  }
-
-  &__filter {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-4;
-    margin-bottom: $spacing-4;
-
-    @include mobile {
-      flex-direction: column;
-    }
-
-    label {
-      display: flex;
-      align-items: center;
-      gap: $spacing-2;
-      font-size: $font-size-base;
-      color: $gray-600;
-
-      input {
-        margin-right: $spacing-2;
-      }
-    }
-
-    select {
-      padding: $spacing-2;
-      border: 1px solid $gray-300;
-      border-radius: $radius-md;
-      font-size: $font-size-base;
-      color: $gray-600;
-    }
   }
 
   &__route {
