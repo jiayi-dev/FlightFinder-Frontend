@@ -1,4 +1,6 @@
 import { format } from 'date-fns';
+import airports from '../data/airports.json';
+import airlines from '../data/airline.json';
 
 export const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -19,3 +21,13 @@ export const formatDuration = (duration) => {
     }
     return 'Invalid duration';
 };
+
+export const airportMap = Object.values(airports).reduce((acc, airport) => {
+    acc[airport.iata_code] = airport.name;
+    return acc;
+}, {});
+
+export const airlineMap = airlines.reduce((acc, airline) => {
+    acc[airline.iata_code] = airline.name;
+    return acc;
+}, {});
